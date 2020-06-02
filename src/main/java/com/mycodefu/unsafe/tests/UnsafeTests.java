@@ -18,6 +18,17 @@ public static void main(String[] args) throws Exception {
 	for(byte b : bytes) {
 		System.out.printf("%s, ", Byte.toString(b));
 	}
-	System.out.println();
+	System.out.println("\n");
+	unsafe.putChar(bytes, unsafe.arrayBaseOffset(bytes.getClass()), 'h');
+	for(byte b : bytes) {
+		System.out.printf("%s, ", Byte.toString(b));
+	}
+	System.out.println("\n");
+	System.out.println(Long.MAX_VALUE);
+	System.out.println(unsafe.getLong(bytes, unsafe.arrayBaseOffset(bytes.getClass())));
+	long address = unsafe.allocateMemory(8);
+	System.out.println(address);
+	unsafe.putInt(address, Integer.MAX_VALUE);
+	System.out.println(unsafe.getInt(address));
 }
 }
