@@ -30,6 +30,8 @@ public static void main(String[] args) throws Exception {
 	System.out.println(address);
 	unsafe.putInt(address, Integer.MAX_VALUE);
 	System.out.println(unsafe.getInt(address));
+	System.gc();
+	System.out.println(unsafe.getInt(address));
 	unsafe.freeMemory(address);
 }
 }
